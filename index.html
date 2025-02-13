@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
+</head>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const sections = document.querySelectorAll("section");
+
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    gsap.to(entry.target, {
+                        opacity: 1,
+                        y: 0,
+                        duration: 1,
+                        ease: "power2.out"
+                    });
+                    entry.target.classList.add("show");
+                }
+            });
+        }, { threshold: 0.1 });
+
+        sections.forEach(section => {
+            // Set initial state for GSAP
+            gsap.set(section, { opacity: 0, y: 30 });
+            observer.observe(section);
+        });
+    });
+</script>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <h1>My Portfolio</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#languages">Languages</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home">
+        <div class="home-content">
+            <h2>Hi, I'm <span>Nikith Gowda BS</span></h2>
+            <p>A passionate Web Developer</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2>About Me</h2>
+        <p>Hello! I'm Nikith Gowda B S, a passionate BTech student specializing in Computer Science and Artificial Intelligence at Rishihood University, with expertise in software development, AI, and web development, and hands-on experience in HTML, CSS, JavaScript, Python, Bash, and Java, dedicated to building modern, responsive websites.</p>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages">
+        <h2>Languages I Know</h2>
+        <div class="languages-container">
+            <div class="language"><img src="icons/html.png" alt="HTML"> HTML</div>
+            <div class="language"><img src="icons/css.png" alt="CSS"> CSS</div>
+            <div class="language"><img src="icons/javascript.png" alt="JavaScript"> JavaScript</div>
+            <div class="language"><img src="icons/python.png" alt="Python"> Python</div>
+            <div class="language"><img src="icons/bash.png" alt="Bash"> Bash</div>
+            <div class="language"><img src="icons/java.png" alt="Java"> Java</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2>Contact Me</h2>
+        <p>Email: your.email@example.com</p>
+        <p>LinkedIn: linkedin.com/in/yourprofile</p>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Your Name. All rights reserved.</p>
+    </footer>
+
+</body>
+</html>
